@@ -24,7 +24,15 @@ def words_to_number(words):
     total += current
     return total
 
+ def process_text_file(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+        
+        results = [words_to_number(line.strip()) for line in lines]
+    
+
 if _name_ == "_main_":
     user_input = input("Enter a number in words: ")
     result = words_to_number(user_input)
-    print("Output:", result)
+    print("Output:", result)
