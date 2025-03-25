@@ -30,7 +30,13 @@ def words_to_number(words):
             lines = file.readlines()
         
         results = [words_to_number(line.strip()) for line in lines]
-    
+
+     output_file = file_path.replace('.txt', '_converted.txt')
+        with open(output_file, 'w') as file:
+            for result in results:
+                file.write(str(result) + '\n')
+
+
 
 if _name_ == "_main_":
     user_input = input("Enter a number in words: ")
