@@ -23,3 +23,8 @@ def words_to_number(words):
     
     total += current
     return total
+
+if _name_ == "_main_":
+    user_input = input("Enter a number in words: ")
+    result = words_to_number(user_input)
+    print("Output:", result)
