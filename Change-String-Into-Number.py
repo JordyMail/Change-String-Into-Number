@@ -6,6 +6,7 @@ def words_to_number(words):
         "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50, "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90,
         "hundred": 100, "thousand": 1000, "million": 1000000, "billion": 1000000000
     }
+    
     words = words.lower().replace('-', ' ').split()
     total, current = 0, 0
     
@@ -24,21 +25,22 @@ def words_to_number(words):
     total += current
     return total
 
- def process_text_file(file_path):
+def process_text_file(file_path):
     try:
         with open(file_path, 'r') as file:
             lines = file.readlines()
         
         results = [words_to_number(line.strip()) for line in lines]
-
-     output_file = file_path.replace('.txt', '_converted.txt')
+        
+        output_file = file_path.replace('.txt', '_converted.txt')
         with open(output_file, 'w') as file:
             for result in results:
                 file.write(str(result) + '\n')
-
-
+        
+        print(f"Conversion complete. Results saved to {output_file}")
+    except FileNotFoundError:
+        print("File not found. Please provide a valid file path.")
 
 if _name_ == "_main_":
-    user_input = input("Enter a number in words: ")
-    result = words_to_number(user_input)
-    print("Output:", result)
+    file_path = input("Enter the path to the text file: ")
+    process_text_file(file_path)
