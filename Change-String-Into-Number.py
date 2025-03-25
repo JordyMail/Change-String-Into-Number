@@ -6,3 +6,20 @@ def words_to_number(words):
         "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50, "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90,
         "hundred": 100, "thousand": 1000, "million": 1000000, "billion": 1000000000
     }
+    words = words.lower().replace('-', ' ').split()
+    total, current = 0, 0
+    
+    for word in words:
+        if word in num_words:
+            value = num_words[word]
+            if value >= 100:
+                current *= value
+            else:
+                current += value
+        elif word == "and":
+            continue
+        else:
+            return "Invalid input. Please enter a valid number in words."
+    
+    total += current
+    return total
